@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+		::selection {
+			background-color: #d4cfbf;
+		}
+		.center {
+			text-align: center;
+		}
+		body {
+			margin:  0;
+			padding: 0;
+			font-family: 'Avenir 65 Medium', sans-serif;
+			/* font-family: 'Gilroy Semi Bold'
+			font-family: 'Gilroy Regular'
+			font-family: 'Gilroy Medium' */
+			/* font-family: 'Sofia Pro UltraLight'
+font-family: 'Sofia Pro Medium'
+font-family: 'Sofia Pro SemiBold'
+font-family: 'Sofia Pro' */
+/* font-family: 'Recta'
+font-family: 'Recta Medium'
+font-family: 'Recta Bold'
+font-family: 'Recta Light'
+ */
+			min-height: 100vh;
+		}
+		#mfPreviewBar {
+			display: none;
+		}
+
+
+
+
+		@-webkit-keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+
+		@keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+
+		.in-viewport {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+		}
+
+		.in-viewport.fadeInDown {
+			-webkit-animation-name: fadeInDown;
+			animation-name: fadeInDown;
+		}
+
+
+
+
+
+
+
+
+		p {
+			letter-spacing: -0.1px;
+		    font-family: 'Avenir 55 Roman', sans-serif;
+		    /* width: 50%; */
+		    line-height: 1.9;
+		    color: #5d6065;
+		    font-size: 1.05rem;
+		}
+		#container {
+			background-color: #fff;
+			color: #fff;
+			min-height: 100vh;
+			width: 100%;
+		}
+		#intro .overlay {
+			position: absolute;
+		    width: 100%;
+		    height: 100%;
+		}
+		#intro .floating {
+			font-family: 'Avenir 65 Medium', sans-serif;
+		    position: absolute;
+		    left: 1rem;
+		    top: 8rem;
+		    font-size: 25rem;
+		    transform: rotate(-90deg);
+		    color: #0c0c0c;
+		    z-index: 1;
+		}
+		#intro .overlay img {
+			position: absolute;
+		    opacity: 0;
+		    -webkit-transition: opacity 0.4s ease-in-out;
+		    transition: opacity 0.4s ease-in-out;
+		    width: 38%;
+		    right: 14%;
+    		top: 3%;
+    		-webkit-filter: grayscale(1);
+    		filter: grayscale(1);
+		}
+		#intro .overlay img.show {
+			opacity: 1;
+			z-index: 1;
+		}
+		.row {
+			display: flex;
+			width: 100%;
+		}
+		.flex-column {
+			flex-flow: column nowrap;
+		}
+		.flex-row {
+			flex-flow: row nowrap;
+		}
+		.flex-row.center {
+			top: 50%;
+		    position: absolute;
+		    transform: translateY(-50%);
+		}
+		.col-full {
+			flex: none;
+		}
+		.col-width-65 {
+			width: 65%;
+		}
+		.col-2 {
+			flex: 2;
+			margin: 30px;
+		}
+		.col-4 {
+			flex: 4;
+			margin: 30px;
+		}
+		.col-5 {
+			flex: 5;
+			margin: 30px;
+		}
+		.col-6 {
+			flex: 6;
+			margin: 30px;
+		}
+		.col-7 {
+			flex: 7;
+			margin: 30px;
+		}
+		.col-8 {
+			flex: 8;
+			margin: 30px;
+		}
+		.col-9 {
+			flex: 9;
+			margin: 30px;
+		}
+		.col-4.no-margin {
+			margin: 0;
+		}
+
+		.flourish {
+			margin: 0 auto;
+			width: 50px;
+			height: 50px;
+			border: 3px solid #000;
+		}
+
+		nav {
+
+		}
+		nav > ul {
+			list-style: none;
+			padding: 0;
+			align-items: center;
+		    justify-content: flex-end;
+		    display: flex;
+		    flex-flow: row nowrap;
+		}
+		nav > ul > li {
+			margin: 0 30px;
+		}
+		nav > ul > li > a {
+			color:  #fff;
+			text-decoration: none;
+		}
+		#posts {
+			padding: 150px 150px 75px 150px;
+			color: #000;
+			position: relative;
+			overflow: hidden;
+		}
+		#posts:before {
+			content: "";
+		    height: 390px;
+		    background-color: rgba(21, 21, 21, 0.1);
+		    width: 10px;
+		    position: absolute;
+		    left: 63px;
+		    top: -21px;
+		    transform: rotate(-45deg);
+		}
+		#posts h2 {
+			font-size: 3rem;
+			margin: 0;
+		}
+		a.card {
+			align-items: center;
+		    display: flex;
+		    flex-flow: row nowrap;
+		    justify-content: flex-end;
+		    text-decoration: none;
+		    margin: 50px 30% 50px 150px;
+		    color: #000;
+		        font-family: 'Recta Medium';
+		}
+		.card > div[class*="col"] {
+			margin: 0;
+		}
+		.card .card-title {
+			font-size: 1.5rem;
+			margin: 0;
+			margin-right: 1rem;
+			font-family: 'Avenir 65 Medium', sans-serif;
+		}
+		.card .card-description {
+			color: #999;
+		    font-weight: 400;
+		    font-size: 1.15rem;
+		    margin: 0;
+		}
+		.card .card-meta {
+			color: #000;
+		    font-weight: 700;
+		    font-size: 0.85rem;
+		    margin: 0;
+		        margin-left: 2rem;
+		}
+		.card .card-meta:first-child {
+			    color: #999;
+		}
+		.card .card-meta + .card-meta {
+			font-size: 1.65rem;
+		}
+		.card.yellow {
+			/* background-color: #FFB700; */
+			background:  #e8d9b2;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+		}
+		.card.red {
+			background: #ff9d88;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+			/* background-color: #8CBEB3; */
+		}
+		.card.green {
+			background: #001263;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+			/* background-color: #F32F05; */
+		}
+		#intro {
+			padding-bottom: 10rem;
+			position: relative;
+		}
+		#intro #social-links {
+			position: fixed;
+			position: absolute;
+		    bottom: calc(20%);
+		    right: calc(4%);
+		    z-index: 3;
+		}
+		a.btn-social {
+			background-color: #fff;
+			color: #000;
+			padding: 9px 20px;
+    		border-radius: 50px;
+    		font-size: 0.95rem;
+    		font-family: 'Recta Bold'; 
+    		font-family: 'Futura PT Medium';
+    		opacity: 0.75;
+    		transition: opacity 0.3s ease-in-out;
+		}
+		a.btn-social:hover {
+			opacity: 1;
+		}
+		a.btn-social.dribbble {
+			background-color: #de0d81;
+			color: #fff;
+		}
+		a.btn-social.linkedin {
+			background-color: #0d7ddc;
+			color: #fff;
+		}
+		#intro #social-links a:first-child {
+		    margin-right: 1rem;
+		}
+		#intro .story-wrapper {
+			margin: 75px;
+			position: absolute;
+		    z-index: 2;
+		    width: 55%;
+		}
+		/*#intro .story-wrapper a {
+			color: #21ed69;
+			border-color: #21ed69;
+		}*/
+		#intro .story-wrapper h2 {
+			font-size: 2.5rem;
+    		line-height: 1.4;
+    		margin-bottom: 0;
+    		display: inline;
+    		letter-spacing: 1px;
+    		/* font-family: 'Campton Book'; */
+    		/* font-family: 'Recta'; */
+		}
+		@-moz-document url-prefix() {
+			#intro .story-wrapper h2 {
+				letter-spacing: 0;
+			}
+		}
+		#intro .btn {
+			margin-left: 20px;
+			/* font-size: 0.8rem; */
+			position: relative;
+    		/* top: -8px; */
+		}
+
+		#hero, #intro {
+			background-color: #000; //1A191F
+		}
+		#intro {
+			min-height: 500px;
+			height: 95vh;
+		}
+		#hero .site-icon {
+			border: 3px solid #fff;
+			width:  40px;
+			height: 40px;
+			position: relative;
+    		display: block;
+    		border-top-color: ;
+    		border-right-color: ;
+    		border-bottom-color: ;
+    		border-left-color: ;
+    		color: #fff;
+		}
+		#hero .site-icon > span {
+			padding-left: 45px;
+    		display: block;
+		}
+		#hero .site-icon:before {
+			content: "";
+		    width: 100px;
+		    height: 50px;
+		    background-color: #000;
+		    position: absolute;
+		    display: block;
+		    z-index: 1;
+		    top: 0;
+		    left: 40px;
+		    transition: all 0.3s ease-in-out;
+		}
+		#hero .site-icon:hover {
+			background-color: #fff;
+		}
+		#hero .site-icon:hover:before {
+			left: 115px;
+		}
+		#hero .site-title {
+			font-family: 'Avenir 85 Heavy', sans-serif;
+			font-size: 1.5rem;
+			letter-spacing: 0.5px;
+			display: none;
+		}
+		#slide-1 {
+			position: relative;
+			background-color: #fff;
+		    color: #000;
+		    min-height: 600px;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    width: 100%;
+		    text-align: center;
+		    overflow: hidden;
+		}
+
+		#slide-1:before {
+			content: "";
+			width: 100%;
+			height: 75px;
+			/* background-color: #ffeb3b;
+			background-color: #dde3e6; */
+			position: absolute;
+			transform: rotate(45deg);
+			top: 50%;
+    		right: -25%;
+		}
+		#slide-1 h3 {
+			/* font-family: 'Sofia Pro SemiBold'; */
+			font-size: 1.5rem;
+			z-index: 99;
+			line-height: 1.5;
+		}
+
+		#cards, #posts {
+			background-color: #fff;
+		}
+
+		#social {
+			background-color: #fff;
+		}
+
+		#posts .btn, #social .btn {
+			text-align: center;
+			margin: 50px auto;
+		}
+
+		#posts-meta {
+			justify-content: center;
+			margin: 5rem 0;
+		}
+		#posts-meta a:hover {
+			color: #000;
+		}
+
+		#social {
+			justify-content: flex-end;
+		}
+		#social .btn {
+			text-align: right;
+			margin: 25px 30px;
+		}
+
+
+		#posts .btn:hover, #social .btn:hover {
+			color: grey;
+			border-color: grey;
+		}
+
+		a {
+			text-decoration: none;
+			transition: all 0.3s ease-in-out;			
+		}
+		a.btn {
+			position: relative;
+		}
+		a.btn-primary {
+			border-radius: 50px;
+			background-color: #ff5722;
+			color: #fff;
+			padding: 8px 13px;
+		}
+		a.btn-primary:hover {
+			background-color: #ff7043;
+		}
+		a.btn-inline {
+			display: inline;
+		}
+		a.btn-text {
+		
+		}
+		a.btn-text.text-grey {
+			color: grey;
+		    border-bottom: 1px solid grey;
+		}
+		a.btn-text.text-grey:hover {
+			color: #fff;
+		    border-color: #fff;
+		}
+		a.border-pink {
+			border-color: #EA4C89!important;
+		}
+		a.border-blue {
+			border-color: blue!important;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="hero" class="row flex-row">
+			<div class="col-4">
+				<a href="#" class="site-icon">
+					<span>chris swarbrick</span>
+				</a>
+				<h1 class="site-title">Title</h1>
+			</div>
+			<div class="col-8">
+				<nav>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Projects</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About &amp; Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div id="intro">
+			<div class="row flex-row">
+				<div class="col-9">
+					<div class="story-wrapper">
+						<h2>Developing property business E&amp;C revolutionised their ability to manage and develop their portfolio of properties.</h2>
+						<a href="#" class="btn btn-text text-grey btn-inline">View the E&amp;C Project to see how</a>
+					</div>
+				</div>
+				<div class="col-4"></div>
+				<div class="overlay">
+					<img src="https://hd.unsplash.com/photo-1437814776167-b50ed34294ff" alt="portfolio image"/>
+					<!-- https://hd.unsplash.com/photo-1451153378752-16ef2b36ad05
+					https://hd.unsplash.com/photo-1460469244935-6ce05b5d7cc5
+					https://hd.unsplash.com/photo-1427438029068-410110bc4822
+					https://hd.unsplash.com/photo-1437814776167-b50ed34294ff
+					 -->
+				</div>
+			</div>
+			<div id="social-links">
+				<a href="#" class="btn-social dribbble">See My Dribbble Shots</a>
+				<a href="#" class="btn-social linkedin">View My LinkedIn Profile</a>
+			</div>
+				<!-- <div class="floating">
+					E&amp;C
+				</div> -->			
+		</div>
+<!-- 		<div id="slide-1" class="row flex-row">
+			<div class="col-full col-width-65">
+				<h3>Within a minimalistic design we focused on creating an optimal experience. The identity and site are stripped down to the pure essentials, just like their products.</h3>
+				<div class="flourish"></div>
+			</div>
+		</div> -->
+		<section id="posts">
+			<div class="row flex-row">
+				<div class="col-12">
+					<h2>Blog posts</h2>
+				</div>
+			</div>
+		</section>
+		<div id="cards" class="row flex-column">
+			<a href="#" class="card">
+				<div class="col-6">
+					<h1 class="card-title">Any time and for any amount of time</h1>
+				</div>
+				<div class="col-4">
+					<h2 class="card-description">Tilr can be used to fill short-term unexpected openings.</h2>
+				</div>
+				<div class="col-2">
+					<h2 class="card-meta">OCT 5.</h2>
+					<h2 class="card-meta">2016</h2>
+				</div>
+			</a>
+			<a href="#" class="card">
+				<div class="col-6">
+					<h1 class="card-title">Skills, meet opportunity</h1>
+				</div>
+				<div class="col-4">
+					<h2 class="card-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+				</div>
+				<div class="col-2">
+					<h2 class="card-meta">JUNE 4.</h2>
+					<h2 class="card-meta">2016</h2>
+				</div>
+			</a>
+			<a href="#" class="card">
+				<div class="col-6">
+					<h1 class="card-title">Work that works for you</h1>
+				</div>
+				<div class="col-4">
+					<h2 class="card-description">Provides on-demand opportunities.</h2>
+				</div>
+				<div class="col-2">
+					<h2 class="card-meta">JAN 20.</h2>
+					<h2 class="card-meta">2016</h2>
+				</div>
+			</a>
+		</div>
+		<div id="posts-meta" class="row flex-row">
+			<a href="#" class="btn btn-text text-grey">View more posts +</a>
+		</div>
+	</div>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=10336(font-family=Avenir+35+Light)&sid=10338(font-family=Avenir+55+Roman)&sid=10340(font-family=Avenir+85+Heavy)&sid=10344(font-family=Avenir+65+Medium)&key=oRGnEXqYyN',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=253748(font-family=Campton+Bold+DEMO)&sid=253753(font-family=Campton+Book)&sid=253759(font-family=Campton+Light+DEMO)&sid=253762(font-family=Campton+Medium)&key=liPVzmWfJl',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=99266(font-family=Futura+PT+Light)&sid=99268(font-family=Futura+PT+Book)&sid=99270(font-family=Futura+PT+Medium)&sid=172341(font-family=Futura+PT+Bold)&key=0iQDPgWZVZ',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=292121(font-family=Viva+Beautiful)&key=0Mv42Ilxyk',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=210689(font-family=Sofia+Pro+UltraLight)&sid=210694(font-family=Sofia+Pro+Medium)&sid=210696(font-family=Sofia+Pro+SemiBold)&sid=210699(font-family=Sofia+Pro)&key=XS6I7JzOKQ',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=202164(font-family=Recta)&sid=202185(font-family=Recta+Medium)&sid=202186(font-family=Recta+Bold)&sid=202192(font-family=Recta+Light)&key=BLDabrSneq',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=260918(font-family=Sailec+Bold)&sid=260923(font-family=Sailec+Light)&sid=260924(font-family=Sailec+Medium)&sid=260929(font-family=Sailec+Regular+Italic)&key=AjjW7vOpUs',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script src="jquery.js"></script>
+<script src="verge.js"></script>
+<script>
+$(document).ready(function(){
+
+	var heroOverlay = $("#intro .overlay img");
+	$(".story-wrapper .btn").hover(function(){
+		heroOverlay.toggleClass("show");
+	});
+
+	//Make jquery extend the verge plugin
+	$.extend(verge);
+
+	//Create a list of dom objects and their unique animation name
+	var domObjs = [
+		{"dom": $('#intro h2'), "animationName": "fadeInDown"},
+		{"dom": $('#slide-1 h3'), "animationName": "fadeInDown"}
+	];
+
+	$(window).scroll(function(){
+		//On scroll, go through each value in the array and add/remove the class based off the return value of $.inViewport()
+		$.each(domObjs, function(index, val){
+			if($.inViewport(val.dom)){
+				$(val.dom).addClass('in-viewport ' + val.animationName);
+			} else {
+				$(val.dom).removeClass('in-viewport ' + val.animationName);
+			}
+		});	
+	});
+});
+</script>
+</body>
+</html>

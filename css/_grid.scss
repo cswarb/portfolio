@@ -1,0 +1,92 @@
+//Grid
+.row {
+	display: flex;
+	width: 100%;
+}
+
+.flex-column {
+	flex-flow: column nowrap;
+}
+
+.flex-row {
+	flex-flow: row nowrap;
+}
+
+.flex-row.center {
+	top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-middle {
+	align-items: center;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+.col-full {
+	flex: none;
+}
+
+//12 col flex grid
+@for $i from 1 through 12 {
+	.col-#{$i} {
+		flex: #{$i};
+		margin: 2rem;
+		&:first-child {
+			margin-left: 0;	
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+		&.no-margin {
+			margin: 0;
+		}
+	}
+	.col-basis-#{$i} {
+		width: ($i/12)*100+%;
+	}
+	.col-offset-left-#{$i} {
+		margin-left: ($i/12)*100+%;
+	}
+	.col-offset-right-#{$i} {
+		margin-right: ($i/12)*100+%;
+	}
+}
+
+//Specific column width value in increments of 5
+$types: 100;
+@while $types > 0 {
+	.col-width-#{$types} {
+		width: $types+'%';
+	}
+	$types: $types - 5
+}
+
+[class*="col"] > [class*="col"] {
+	margin-top: 0;
+}
+
+.centered-row {
+	margin: 0 auto;
+}
+
+.constrained-row {
+	width: 85%;
+}
+
+.content-block {
+	margin-top: 5rem!important;
+	// margin-bottom: 15rem!important;
+}
+
+.content-section {
+	position: relative;
+	min-height: 500px;
+}

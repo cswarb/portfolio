@@ -1,0 +1,38 @@
+//Navigation
+.navigation-area {
+	margin: 1rem auto;
+	.navigation {
+		display: flex;	
+		justify-content: flex-end;
+		font-size: 1.1rem;
+		> .mobile-menu, .close-nav {
+			display: none;
+		}
+		> .nav-list {
+			list-style: none;
+			padding: 0;
+			align-items: center;
+		    justify-content: flex-end;
+		    display: flex;
+		    flex-flow: row nowrap;
+		    > .nav-list-item {
+				margin: 0 30px;
+				> a {
+					color:  $white;
+					text-decoration: none;
+					&.active {
+						text-decoration: underline;
+					}
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
+body.project .navigation-area {
+	.navigation {
+		color: $white;
+	}
+}

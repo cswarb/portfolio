@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+		::selection {
+			background-color: #d4cfbf;
+		}
+		body {
+			margin:  0;
+			padding: 0;
+			font-family: 'Avenir 65 Medium', sans-serif;
+			/* font-family: 'Gilroy Semi Bold'
+			font-family: 'Gilroy Regular'
+			font-family: 'Gilroy Medium' */
+			/* font-family: 'Sofia Pro UltraLight'
+font-family: 'Sofia Pro Medium'
+font-family: 'Sofia Pro SemiBold'
+font-family: 'Sofia Pro' */
+/* font-family: 'Recta'
+font-family: 'Recta Medium'
+font-family: 'Recta Bold'
+font-family: 'Recta Light'
+ */
+			min-height: 100vh;
+		}
+		#mfPreviewBar {
+			display: none;
+		}
+
+
+
+
+		@-webkit-keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+
+		@keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+
+		.in-viewport {
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			-webkit-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+		}
+
+		.in-viewport.fadeInDown {
+			-webkit-animation-name: fadeInDown;
+			animation-name: fadeInDown;
+		}
+
+
+
+
+
+
+
+
+		p {
+			letter-spacing: -0.1px;
+		    font-family: 'Avenir 55 Roman', sans-serif;
+		    /* width: 50%; */
+		    line-height: 1.9;
+		    color: #5d6065;
+		    font-size: 1.05rem;
+		}
+		#container {
+			background-color: #fff;
+			color: #fff;
+			min-height: 100vh;
+			width: 100%;
+		}
+		.row {
+			display: flex;
+			width: 100%;
+		}
+		.flex-column {
+			flex-flow: column nowrap;
+		}
+		.flex-row {
+			flex-flow: row nowrap;
+		}
+		.flex-row.center {
+			top: 50%;
+		    position: absolute;
+		    transform: translateY(-50%);
+		}
+		.col-full {
+			flex: none;
+		}
+		.col-width-65 {
+			width: 65%;
+		}
+		.col-center {
+			margin: 0 auto;
+		}
+		.col-4 {
+			flex: 4;
+			margin: 30px;
+		}
+		.col-8 {
+			flex: 8;
+			margin: 30px;
+		}
+		.col-9 {
+			flex: 9;
+			margin: 30px;
+		}
+		.col-4.no-margin {
+			margin: 0;
+		}
+
+		.flourish {
+			margin: 2rem auto;
+			width: 50px;
+			height: 50px;
+			border: 3px solid #000;
+		}
+
+		nav {
+
+		}
+		nav > ul {
+			list-style: none;
+			padding: 0;
+			align-items: center;
+		    justify-content: flex-end;
+		    display: flex;
+		    flex-flow: row nowrap;
+		}
+		nav > ul > li {
+			margin: 0 30px;
+		}
+		nav > ul > li > a {
+			color:  #fff;
+			text-decoration: none;
+		}
+		body.article nav > ul > li > a {
+			color: #000;
+		}
+		a.card {
+			background-color: #FFB700;
+			/* padding: 3%; */
+			min-height: 525px;
+			/* height: 90vh; */
+			align-items: flex-start;
+		    display: flex;
+		    flex-flow: column nowrap;
+		    justify-content: flex-end;
+		    text-decoration: none;
+		}
+		.card > .card-top, .card > .card-bottom {
+			padding: 3%;
+		}
+		.card > .card-bottom {
+			background-color: #f4f6f7;
+			padding: 35px 40px;
+			width: 100%;
+		}
+		.card > .card-bottom > h2 {
+			margin-top: 0;
+			margin-bottom: 40px;
+		    font-size: 1rem;
+		    width: 75%;
+		}
+		.card > .card-border {
+			display: flex;
+		    flex-flow: column nowrap;
+		    border: 3px solid black;
+		    height: 100%;
+		    justify-content: flex-end;
+		    padding: 8%;
+		    width: 100%;
+		    padding-bottom: 19%;
+		}
+		.card.yellow {
+			/* background-color: #FFB700; */
+			background:  #e8d9b2;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+		}
+		.card.red {
+			background: #ff9d88;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+			/* background-color: #8CBEB3; */
+		}
+		.card.green {
+			background: #001263;
+			background-size: cover;
+    		background-position: 50%;
+    		color: #000;
+			/* background-color: #F32F05; */
+		}
+		.card-title {
+			font-family: 'Avenir 85 Heavy', sans-serif;
+			text-decoration: none;
+			margin-bottom: 5%;
+			letter-spacing: 0.5px;
+		}
+		.card-description {
+			/* color:  #000; */
+			margin: 0;
+			text-decoration: none;
+		}
+		#hero {
+			padding-bottom: 10rem;
+		}
+		#hero .story-wrapper {
+			margin:  75px;
+		}
+		#hero .story-wrapper h2 {
+			font-size: 2.5rem;
+    		line-height: 1.4;
+    		margin-bottom: 0;
+    		display: inline;
+    		letter-spacing: 1px;
+    		/* font-family: 'Campton Book'; */
+    		/* font-family: 'Recta'; */
+		}
+		@-moz-document url-prefix() {
+			#hero .story-wrapper h2 {
+				letter-spacing: 0;
+			}
+		}
+		#hero .btn {
+			margin-left: 20px;
+			/* font-size: 0.8rem; */
+			position: relative;
+    		/* top: -8px; */
+		}
+
+		body.article #hero {
+			background-color: #fff;
+			padding-bottom: 4rem;
+		}
+		#hero .site-icon {
+			border: 3px solid #fff;
+			width:  40px;
+			height: 40px;
+			position: relative;
+    		display: block;
+    		border-top-color: ;
+    		border-right-color: ;
+    		border-bottom-color: ;
+    		border-left-color: ;
+    		color: #fff;
+		}
+		#hero .site-icon > span {
+			padding-left: 45px;
+    		display: block;
+		}
+		#hero .site-icon:before {
+			content: "";
+		    width: 100px;
+		    height: 50px;
+		    background-color: #000;
+		    position: absolute;
+		    display: block;
+		    z-index: 1;
+		    top: 0;
+		    left: 40px;
+		    transition: all 0.3s ease-in-out;
+		}
+		#hero .site-icon:hover {
+			background-color: #fff;
+		}
+		#hero .site-icon:hover:before {
+			left: 115px;
+		}
+		body.article #hero .site-icon {
+			border-color:  #000;
+		}
+		body.article #hero .site-icon:before {
+			background-color: #fff;
+		}
+		body.article #hero .site-icon:hover {
+			background-color: #000;
+		}
+		#hero .site-icon > span {
+			color: #000;
+		}
+		body.article #hero .site-icon > span:hover {
+			color: #000;
+		}
+		body.article #hero .story-wrapper h2 {
+			color:  #000;
+		}
+		#hero .site-title {
+			font-family: 'Avenir 85 Heavy', sans-serif;
+			font-size: 1.5rem;
+			letter-spacing: 0.5px;
+			display: none;
+		}
+		#slide-1 {
+			position: relative;
+			background-color: #fff;
+		    color: #000;
+		    min-height: 600px;
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    width: 100%;
+		    text-align: center;
+		    overflow: hidden;
+		}
+
+		#slide-1:before {
+			content: "";
+			width: 100%;
+			height: 75px;
+			/* background-color: #ffeb3b;
+			background-color: #dde3e6; */
+			position: absolute;
+			transform: rotate(45deg);
+			top: 50%;
+    		right: -25%;
+		}
+		#slide-1 h3 {
+			/* font-family: 'Sofia Pro SemiBold'; */
+			font-size: 1.5rem;
+			z-index: 99;
+			line-height: 1.5;
+		}
+
+		#cards, #posts, #social {
+			background-color: #fff;
+		}
+
+		#posts .btn, #social .btn {
+			text-align: center;
+			margin: 50px auto;
+		}
+
+		#social {
+			justify-content: flex-end;
+		}
+		#social .btn {
+			text-align: right;
+			margin: 25px 30px;
+		}
+
+		#posts .btn:hover, #social .btn:hover {
+			color: grey;
+			border-color: grey;
+		}
+
+		#content {
+			color: #000;
+		}
+		#content h3 {
+			margin-top: 2rem;
+			margin-bottom: 0.5rem;
+		}
+		#content p {
+			margin-top: 0;
+		}
+		#content .content-intro {
+			margin-bottom: 5rem;
+			line-height: 1.8;
+		}
+
+		blockquote {
+			margin: 50px auto;
+			width: 55%;
+			min-width: 320px;
+			position: relative;
+		}
+		blockquote:before {
+			content: "\"";
+			position: absolute;
+			left: -70px;
+			top: 50%;
+			transform: translateY(-50%) rotate(-10deg);
+			color: #e3e9ef;
+			font-size: 10rem;
+		}
+		blockquote > p {
+			margin: 0;
+			font-family: 'Sofia Pro SemiBold', sans-serif;
+		}
+
+		pre {
+			background-color: #eceef1;
+			display: block;
+			padding: 15px;
+		}
+		pre > code {
+
+		}
+
+		a {
+			text-decoration: none;
+			transition: all 0.3s ease-in-out;			
+		}
+		a.btn {
+			position: relative;
+		}
+		a.btn-primary {
+			border-radius: 50px;
+			background-color: #ff5722;
+			color: #fff;
+			padding: 8px 13px;
+		}
+		a.btn-primary:hover {
+			background-color: #ff7043;
+		}
+		a.btn-inline {
+			display: inline;
+		}
+		a.btn-text {
+		
+		}
+		a.btn-text.text-grey {
+			color: grey;
+		    border-bottom: 1px solid grey;
+		}
+		a.btn-text.text-grey:hover {
+			color: #fff;
+		    border-color: #fff;
+		}
+		a.border-pink {
+			border-color: #EA4C89!important;
+		}
+		a.border-blue {
+			border-color: blue!important;
+		}
+	</style>
+</head>
+<body class="article">
+	<div id="container">
+		<div id="hero">
+			<div class="top row flex-row">
+				<div class="col-4">
+					<a href="#" class="site-icon">
+						<span>chris swarbrick</span>
+					</a>
+					<h1 class="site-title">Title</h1>
+				</div>
+				<div class="col-8">
+					<nav>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Projects</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">About &amp; Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="bottom row flex-row">
+				<div class="col-9">
+					<div class="story-wrapper">
+						<h2>Once again, Nike pushed the boundaries of innovation with an interactive iBook that stunned the delegates of an innovation summit in Moscow.</h2>
+						<!-- <a href="#" class="btn btn-text text-grey btn-inline">View the Nike Project</a> -->
+					</div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+		</div>
+		<article id="content" class="row flex-row">
+			<div class="col-full col-width-65 col-center">
+				<h2 class="content-intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod explicabo, minima! Cumque, velit ipsa. Architecto dolor velit hic, praesentium laudantium ducimus iure nisi temporibus voluptate nesciunt, consectetur est nihil! Commodi!</h2>
+
+				<h3>Lorem ipsum dolor sit amet.</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, aliquam, aliquid. Eos eum, illo autem unde consequatur, obcaecati quam voluptatem repellat consequuntur repellendus delectus voluptas architecto, quos amet hic aliquid! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque velit, maiores maxime iure odit voluptates autem, totam voluptatibus rem quisquam quasi! Repudiandae obcaecati, rerum voluptate eius recusandae atque. Eum, totam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim alias excepturi laboriosam sed voluptatibus porro reiciendis voluptate quas deleniti nisi soluta, nulla ullam tempora, dicta, optio id sit expedita aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, fuga, atque. Facere id unde magnam odio, ipsam, rerum, voluptate aliquam quos ea nihil alias soluta maiores nisi odit pariatur eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio necessitatibus ratione eum blanditiis accusamus maiores enim adipisci repellendus beatae! Minus fugiat velit eum eligendi ut deserunt eveniet dolores praesentium sunt.</p>
+
+				<h3>Title</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolores maiores quas voluptates, itaque, nam quidem neque corporis odio veniam illum quibusdam quis molestias, ad a accusantium, quo iure cumque! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores inventore, repellendus autem commodi sunt vero veritatis accusantium distinctio, dolorem tempora magni, mollitia amet optio ea nobis eveniet laborum ad labore.</p>
+
+				<blockquote>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut voluptatibus ullam, eius non accusamus nobis magnam, maxime, quas dicta voluptate aliquam adipisci earum suscipit odio, harum at voluptatum ratione quasi?</p>
+				</blockquote>
+
+			
+				<pre><code>console.log("hello");</code></pre>
+				
+
+				<div class="flourish"></div>
+			</div>
+		</article>
+		<div id="posts" class="row flex-row">
+			<a href="#" class="btn btn-text text-grey">View more posts +</a>
+		</div>
+		<div id="social" class="row flex-row">
+			<a href="#" target="_BLANK" class="btn btn-text text-grey border-pink">Dribbble</a>
+			<a href="#" target="_BLANK" class="btn btn-text text-grey border-blue">LinkedIn</a>
+		</div>
+	</div>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=10336(font-family=Avenir+35+Light)&sid=10338(font-family=Avenir+55+Roman)&sid=10340(font-family=Avenir+85+Heavy)&sid=10344(font-family=Avenir+65+Medium)&key=oRGnEXqYyN',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=253748(font-family=Campton+Bold+DEMO)&sid=253753(font-family=Campton+Book)&sid=253759(font-family=Campton+Light+DEMO)&sid=253762(font-family=Campton+Medium)&key=liPVzmWfJl',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=99266(font-family=Futura+PT+Light)&sid=99268(font-family=Futura+PT+Book)&sid=99270(font-family=Futura+PT+Medium)&sid=172341(font-family=Futura+PT+Bold)&key=0iQDPgWZVZ',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=292121(font-family=Viva+Beautiful)&key=0Mv42Ilxyk',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=210689(font-family=Sofia+Pro+UltraLight)&sid=210694(font-family=Sofia+Pro+Medium)&sid=210696(font-family=Sofia+Pro+SemiBold)&sid=210699(font-family=Sofia+Pro)&key=XS6I7JzOKQ',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=202164(font-family=Recta)&sid=202185(font-family=Recta+Medium)&sid=202186(font-family=Recta+Bold)&sid=202192(font-family=Recta+Light)&key=BLDabrSneq',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+<script src="jquery.js"></script>
+<script src="verge.js"></script>
+<script>
+$(document).ready(function(){
+
+	//Make jquery extend the verge plugin
+	$.extend(verge);
+
+	//Create a list of dom objects and their unique animation name
+	var domObjs = [
+		{"dom": $('#intro h2'), "animationName": "fadeInDown"},
+		{"dom": $('#slide-1 h3'), "animationName": "fadeInDown"}
+	];
+
+	$(window).scroll(function(){
+		//On scroll, go through each value in the array and add/remove the class based off the return value of $.inViewport()
+		$.each(domObjs, function(index, val){
+			if($.inViewport(val.dom)){
+				$(val.dom).addClass('in-viewport ' + val.animationName);
+			} else {
+				$(val.dom).removeClass('in-viewport ' + val.animationName);
+			}
+		});	
+
+	});
+});
+</script>
+</body>
+</html>

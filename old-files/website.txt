@@ -1,0 +1,20 @@
+srcset responsive images
+
+
+
+https://www.smashingmagazine.com/2016/12/front-end-performance-checklist-2017-pdf-pages/
+- paint times
+- first render
+- cutting the mustard
+
+
+compress assets
+
+
+https certificate
+
+
+async js
+
+
+webP

@@ -1,0 +1,125 @@
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(10%, 2.5%, 0);
+    transform: translate3d(10%, 2.5%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(10%, 2.5%, 0);
+    transform: translate3d(10%, 2.5%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(10%, 2.5%, 0);
+    transform: translate3d(10%, 2.5%, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(10%, 2.5%, 0);
+    transform: translate3d(10%, 2.5%, 0);
+  }
+}
+
+@keyframes cardHover {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  10% {
+    transform: translateY(0) scale(1.0025);
+  }
+  20% {
+    transform: translateY(0) scale(1.005);
+  }
+  30% {
+    transform: translateY(0) scale(1.0075);
+  }
+  40% {
+    transform: translateY(0) scale(1.01);
+  }
+  50% {
+    transform: translateY(0) scale(1.0125);
+  }
+  60% {
+    transform: translateY(0) scale(1.015);
+  }
+  70% {
+    transform: translateY(-0.5%) scale(1.0175);
+  }
+  80% {
+    transform: translateY(-1%) scale(1.02);
+  }
+  90% {
+    transform: translateY(-2%) scale(1.0225);
+  }
+  100% {
+    transform: translateY(-3%) scale(1.025);
+  }
+}
+
+@keyframes cardHoverOut {
+  0% {
+    transform: translateY(-3%) scale(1.025);
+  }
+  10% {
+    transform: translateY(-2%) scale(1.0225);
+  }
+  20% {
+    transform: translateY(-1%) scale(1.02);
+  }
+  30% {
+    transform: translateY(-0.5%) scale(1.0175);
+  }
+  40% {
+    transform: translateY(0) scale(1.015);
+  }
+  50% {
+    transform: translateY(0) scale(1.0125);
+  }
+  60% {
+    transform: translateY(0) scale(1.01);
+  }
+  70% {
+    transform: translateY(0) scale(1.00075);
+  }
+  80% {
+    transform: translateY(0) scale(1.005);
+  }
+  90% {
+    transform: translateY(0) scale(1.0025);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
