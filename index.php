@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="css/main.css" data-all-devices>
 </head>
 <body>
+
+<?php include("analyticstracking.php"); ?>
+
 	<div id="container">
 
 		<div id="hero" role="banner">
@@ -37,7 +40,6 @@
 
     </div>
 
-<script src="js/showads.js"></script>
 <script>
 window.onload = function() {
     var heroUnderlayImage = document.querySelector("#intro .content-section-underlay-image"),
@@ -83,9 +85,9 @@ window.onload = function() {
     };
 
     //Determine if the user has an adblocker by adding a window variable in a script with the word 'ad', and test for it after load.
-    if(!window.canSeeAds) {
-        body.appendChild(setHtml(document.createElement("div"), "Please allow ads on this website and refresh to view my social profiles.", ["alert-msg-bar", "adblocker"]));
-    };
+    // if(!window.canSeeAds) {
+    //     body.appendChild(setHtml(document.createElement("div"), "Please allow ads on this website and refresh to view my social profiles.", ["alert-msg-bar", "adblocker"]));
+    // };
 
     //Display a message based off the query var
     <?php if(isset($_GET["ref"])) :

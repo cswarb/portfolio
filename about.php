@@ -107,170 +107,94 @@
 
 	</div>
 
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-
 <script>
-	var copyButton = $("#copy-btn"),
-		emailField = $(".email-text-input"),
-		emailCopyContainer = $(".email-component");
+window.onload = function() {
+	var copyButton = document.getElementById("copy-btn"),
+		emailField = document.querySelector(".email-text-input"),
+		emailCopyContainer = document.querySelector(".email-component");
 
-	copyButton.click(function(){
-		copyButton.attr("disabled", "disabled");
+	copyButton.addEventListener("click", function(){
+		copyButton.setAttribute("disabled", "disabled");
 		var emailText = emailField.select();
+		
 		try {
 			var successful = document.execCommand('copy'),
 				msg = successful ? 'Copied successfully' : 'Could not copy';
-			emailCopyContainer.parent().append("<p>" + msg + "</p>");
+
+			emailCopyContainer.parentNode.appendChild(setHtml(document.createElement("p"), msg, ["copy-msg"]));
+
 			setTimeout(function(){
-				copyButton.attr("disabled", false);
-				emailCopyContainer.parent().find("p").remove();
+				var para = findChildParagraph(emailCopyContainer.parentNode, "copy-msg");
+				copyButton.setAttribute("disabled", false);
+				emailCopyContainer.parentNode.removeChild(para);
 			}, 1250);
 		} catch (err) {
-			emailCopyContainer.parent().append("<p>" + "Unable to Copy - Your browser does not support this action" + "</p>");
+			emailCopyContainer.parentNode.appendChild(setHtml(document.createElement("p"), "Unable to Copy - Your browser does not support this action", []));
 			setTimeout(function(){
-				emailCopyContainer.parent().find("p").remove();
+				var para = findChildParagraph(emailCopyContainer.parentNode, "copy-msg");
+				emailCopyContainer.parentNode.removeChild(para);
 			}, 1250);
 		};
 	});
-</script>
 
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=10336(font-family=Avenir+35+Light)&sid=10338(font-family=Avenir+55+Roman)&sid=10340(font-family=Avenir+85+Heavy)&sid=10344(font-family=Avenir+65+Medium)&key=oRGnEXqYyN',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=253748(font-family=Campton+Bold+DEMO)&sid=253753(font-family=Campton+Book)&sid=253759(font-family=Campton+Light+DEMO)&sid=253762(font-family=Campton+Medium)&key=liPVzmWfJl',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=99266(font-family=Futura+PT+Light)&sid=99268(font-family=Futura+PT+Book)&sid=99270(font-family=Futura+PT+Medium)&sid=172341(font-family=Futura+PT+Bold)&key=0iQDPgWZVZ',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=292121(font-family=Viva+Beautiful)&key=0Mv42Ilxyk',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=210689(font-family=Sofia+Pro+UltraLight)&sid=210694(font-family=Sofia+Pro+Medium)&sid=210696(font-family=Sofia+Pro+SemiBold)&sid=210699(font-family=Sofia+Pro)&key=XS6I7JzOKQ',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=202164(font-family=Recta)&sid=202185(font-family=Recta+Medium)&sid=202186(font-family=Recta+Bold)&sid=202192(font-family=Recta+Light)&key=BLDabrSneq',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-<script type="text/javascript">
-    (function() {
-        var path = '//easy.myfonts.net/v2/js?sid=260918(font-family=Sailec+Bold)&sid=260923(font-family=Sailec+Light)&sid=260924(font-family=Sailec+Medium)&sid=260929(font-family=Sailec+Regular+Italic)&key=AjjW7vOpUs',
-            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
-            trial = document.createElement('script');
-        trial.type = 'text/javascript';
-        trial.async = true;
-        trial.src = protocol + path;
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(trial);
-    })();
-</script>
-
-
-
-<script src="jquery.js"></script>
-<script>
-$(document).ready(function(){
-
-	var heroOverlay = $("#intro .overlay img");
-	$(".story-wrapper .btn").hover(function(){
-		heroOverlay.toggleClass("show");
-	});
-
-	//Create a list of dom objects and their unique animation name
-	var domObjs = [
-		{"dom": $('#intro h2'), "animationName": "fadeInDown"},
-		{"dom": $('#slide-1 h3'), "animationName": "fadeInDown"}
-	];
-
-	$(window).scroll(function(){
-		//On scroll, go through each value in the array and add/remove the class based off the return value of $.inViewport()
-		$.each(domObjs, function(index, val){
-			if($.inViewport(val.dom)){
-				$(val.dom).addClass('in-viewport ' + val.animationName);
-			} else {
-				$(val.dom).removeClass('in-viewport ' + val.animationName);
-			};
-		});	
-	});
-});
-</script>
-<script src="js/showads.js"></script>
-<script>
-	//Determine if the user has an adblocker by adding a window variable in a script with the word 'ad', and test for it after load.
-	if(!window.canSeeAds) {
-		$("body").append("<div class='alert-msg-bar adblocker'><p>Please allow ads on this website and refresh to view my social profiles.</p></div>");
+	function findChildParagraph(parent, classToFind) {
+		var childNodes = parent.childNodes,
+			i = 0;
+		for(i; i < childNodes.length; i++) {
+            if(childNodes[i].className == classToFind) {
+            	return childNodes[i];
+            };
+        };
 	};
 
-	//Display a message based off the query var
-	<?php if(isset($_GET["ref"])) :
-		if($_GET["ref"] === "developer") { ?>
-			$("body").append("<div class='alert-msg-bar queryvars queryvars-developer'><p>Because you were reffered with a special link, you can view my code samples page!</p></div>")
-		<?php } elseif($_GET["ref"] === "designer") { ?>
+    var mobileMenu = document.querySelector(".mobile-menu"),
+        mobileMenuClose = document.querySelector(".navigation .close-nav"),
+        nav = document.getElementsByTagName("nav")[0],
+        body = document.getElementsByTagName("body")[0];
 
-		<?php } else { ?>
+    mobileMenu.addEventListener("click", function(){
+        nav.style.display = "flex";
+        body.classList.add("fixed");
+    });
 
-		<?php }; ?>
-		$(".alert-msg-bar.queryvars").delay(10000).fadeOut(function(){
-			$(this).remove();
-		});
-	<?php endif; ?>
+    mobileMenuClose.addEventListener("click", function(){
+        nav.style.display = "none";
+        body.classList.remove("fixed");
+    });
+
+    function setHtml(elem, data, classes) {
+        var i = 0,
+            classArrayLength = classes.length || null;
+        
+        elem.innerHTML = data;
+
+        if(classArrayLength) {
+            for (i; i < classArrayLength; i++) {
+                elem.classList.add(classes[i]);
+            };
+        };
+
+        return elem;
+    };
+
+    //Display a message based off the query var
+    <?php if(isset($_GET["ref"])) :
+        if($_GET["ref"] === "developer") { ?>
+
+            body.appendChild(setHtml(document.createElement("div"), "Because you were referred with a special link, you can view my code samples page!", ["alert-msg-bar", "queryvars", "queryvars-developer"]));
+
+        <?php } elseif($_GET["ref"] === "designer") { ?>
+
+        <?php } else { ?>
+
+        <?php }; ?>
+        setTimeout(function(){
+            document.querySelector(".alert-msg-bar.queryvars").style.opacity = 0;
+            document.querySelector(".alert-msg-bar.queryvars").remove();
+        }, 4000);
+    <?php endif; ?>
+    
+};
 </script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+# Add this to the list of Media files
+AddType image/svg+xml svg svgz
+
+<IfModule mod_mime.c>
+  AddEncoding gzip svgz
+</IfModule>
+
+<IfModule mod_filter.c>
+AddOutputFilterByType DEFLATE "application/atom+xml" \
+                              "application/javascript" \
+                              "application/json" \
+                              "image/svg+xml"
+</IfModule>

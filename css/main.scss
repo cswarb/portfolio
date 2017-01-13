@@ -10,11 +10,11 @@
 //Website Logo
 .site-icon {
 	border: 3px solid $white;
-	width:  40px;
+	color: $white;
+	display: block;
 	height: 40px;
 	position: relative;
-	display: block;
-	color: $white;
+	width:  40px;
 	&.dark {
 		border-color: $background-black;
 		&:before {
@@ -33,19 +33,19 @@
 	}
 	&:before {
 		content: "";
-	    width: 100px;
-	    height: 50px;
 	    background-color: $background-black;
-	    position: absolute;
 	    display: block;
-	    z-index: 1;
-	    top: 0;
+	    height: 50px;
 	    left: 40px;
+	    position: absolute;
+	    top: 0;
 	    transition: all 0.3s ease-in-out;
+	    width: 100px;
+	    z-index: 1;
 	}
 	> span {
-		padding-left: 45px;
 		display: block;
+		padding-left: 45px;
 	}
 }
 
@@ -53,8 +53,8 @@
 	background-color: $background-black;
 	color: $white;
 	min-height: 100vh;
-	width: 100%;
 	padding: 3rem 9rem 3rem 9rem;
+	width: 100%;
 	&.inverse {
 		background-color: $white;
 		color: $black;
@@ -90,7 +90,6 @@ form {
 
 	}
 	input {
-		width: 100%;
 	    background-color: transparent;
 	    border-radius: 3px;
 	    border: 1.5px solid #999;
@@ -100,24 +99,25 @@ form {
 	    height: 46px;
 	    margin: 0.5rem 0 1rem 0;
 	    padding: 0.75rem;
+		width: 100%;
 	}
 	.textarea {
 		position: relative;
 		textarea {
-			font-family: 'Avenir 65 Medium', sans-serif;
-			width: 100%;
 		    background-color: transparent;
 		    border-radius: 3px;
 		    border: 1.5px solid #999;
 		    color: #fff;
+			font-family: 'Avenir 65 Medium', sans-serif;
 		    font-size: 1rem;
 		    font-weight: 400;
 		    height: 46px;
-		    min-height: 200px;
 		    margin: 0.5rem 0 1rem 0;
+		    min-height: 200px;
 		    padding: 0.75rem;
 		    position: relative;
 		    resize: vertical;
+			width: 100%;
 		    + .resize-node {
 		    	background: url("../img/corner-handle.svg");
 		    	bottom: 25px;
@@ -138,11 +138,11 @@ form {
 		height: 95vh;
 	}
 	&-heading {
-		color: $white;
-		margin: 0;
-		font-size: 1.25rem;
-		padding-bottom: 1rem;
 		border-bottom: 5px solid #fff;
+		color: $white;
+		font-size: 1.25rem;
+		margin: 0;
+		padding-bottom: 1rem;
 	}
 	&-content {
 		font-family: 'Avenir 85 Heavy', sans-serif;
@@ -151,9 +151,9 @@ form {
 		width: 70%;
 		z-index: 2;
 		&--hero {
+			max-width: 48vw;
 			position: absolute;
 			width: 70%;
-			max-width: 48vw;
 		}
 	}
 	&-item {
@@ -185,21 +185,21 @@ form {
 		}
 	}
 	.content-section-underlay {
+	    height: 100%;
 		position: absolute;
 	    width: 100%;
-	    height: 100%;
 	    .content-section-underlay-image {
 			// -webkit-filter: grayscale(1);
 			// -webkit-filter: hue-rotate(90deg);
-		    -webkit-transition: opacity 0.4s ease-in-out;
 			// filter: grayscale(1);
-		    opacity: 0;
 			position: absolute;
-		    right: 10%;
 			top: 15%;
-		    transition: opacity 0.4s ease-in-out;
-		    width: 70%;
 		    min-width: 20rem;
+		    opacity: 0;
+		    right: 10%;
+		    transition: opacity 0.4s ease-in-out;
+		    -webkit-transition: opacity 0.4s ease-in-out;
+		    width: 70%;
 			&.show {
 				opacity: 1;
 				z-index: 1;
@@ -235,32 +235,35 @@ form {
 	//     }
 	// }
 	.btn {
-		margin-left: 20px;
 		font-size: 1.3rem;
 		font-family: monospace;
+		margin-left: 20px;
 		position: relative;
 	}
 }
 
 .posts-meta .btn {
-	text-align: center;
 	margin: 50px auto;
+	text-align: center;
 	.btn:hover {
-		color: grey;
 		border-color: grey;
+		color: grey;
 	}
 }
 
+.post .content {
+	font-size: 1.35rem;
+}
 
 .email-component {
-	width: auto;
-	min-width: 50%;
+    align-items: center;
     background-color: transparent;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
-    padding: 0.5rem 1rem 0.5rem 0;
     margin: 0 0 1rem 0;
+	min-width: 50%;
+    padding: 0.5rem 1rem 0.5rem 0;
+	width: auto;
     > .email-text-input {
 		border: 0;
 	    background-color: transparent;
@@ -278,8 +281,8 @@ form {
 .card-list {
 	margin: 2rem 30% 0rem 2rem;
 	.card.project-card {
-		position: relative;
 		padding: 5rem;
+		position: relative;
 	  .project-card-background {
 	  	display: block;
 	  	height: 100%;
@@ -311,22 +314,22 @@ form {
 		}
 	  }
 	  .card-row-title {
+	  	color: #d6dce0;
+	  	left: 5%;
+	  	opacity: 0;
 	  	position: absolute;
 	  	top: 10%;
-	  	left: 5%;
-	  	color: #d6dce0;
-	  	opacity: 0;
 	  	transition: all 0.3s ease-in-out;
 	  	&.hover {
 	  		opacity: 1;
 	  	}
 	  }
 	  .card-row-description {
+	  	color: #fff;
+	  	left: 5%;
+	  	opacity: 0;
 	  	position: absolute;
 	  	top: 25%;
-	  	left: 5%;
-	  	color: #fff;
-	  	opacity: 0;
 	  	transition: all 0.3s ease-in-out;
 	  	&.hover {
 	  		opacity: 1;
@@ -335,12 +338,27 @@ form {
 	}
 	.card {
 		align-items: flex-start;
+	    color: #000;
 	    display: flex;
 	    justify-content: flex-end;
-	    text-decoration: none;
 	    margin: 2rem 0;
-	    color: #000;
+	    text-decoration: none;
 	    transform: translateZ(0);
+	    &.disabled {
+	    	color: $white;
+	    	opacity: 0.5;
+	    	pointer-events: none;
+	    	text-decoration: line-through;
+	    	&:after {
+			    color: $white;
+	    		content: "Coming Soon";
+			    display: inline;
+			    font-family: monospace;
+			    font-size: 1.5rem;
+			    position: absolute;
+			    right: -9rem;
+	    	}
+	    }
 	    &.row {
 			flex-flow: row nowrap;
 			&:hover {
@@ -349,8 +367,8 @@ form {
 	    	}
 	    }
 	    &.column {
-	    	flex-flow: column nowrap;
 	    	animation: cardHoverOut 0.25s ease-in-out forwards;
+	    	flex-flow: column nowrap;
 	    	&:hover {
 	    		animation: cardHover 0.25s ease-in-out forwards;
 	    		transform-origin: center center;
@@ -364,18 +382,18 @@ form {
 		}
 		.card-row-title {
 			color: $white;
+			font-family: 'Avenir 65 Medium', sans-serif;
 			font-size: 1.5rem;
 			margin: 0;
 			margin-right: 1rem;
-			font-family: 'Avenir 65 Medium', sans-serif;
 			&-inverse {
 				color: #36383a;
 				font-family: 'Avenir 85 Heavy', sans-serif;
 			}
 			&:before {
 				// content: "—";
-				position: absolute;
     			left: -2rem;
+				position: absolute;
 			}
 		}
 		.card-row-description {
@@ -422,16 +440,16 @@ form {
 
 a.btn-social {
 	background-color: #fff;
-	color: #000;
-	padding: 9px 20px;
-	border-radius: 50px;
-	font-size: 0.95rem;
-	font-family: 'Recta', sans-serif; 
-	opacity: 0.75;
-	transition: opacity 0.3s ease-in-out;
 	background-color: $background-black;
+	border-radius: 50px;
 	border: 1.5px solid $white;
+	color: #000;
 	color: $white;
+	font-family: 'Recta', sans-serif; 
+	font-size: 0.95rem;
+	opacity: 0.75;
+	padding: 9px 20px;
+	transition: opacity 0.3s ease-in-out;
 	&:hover {
 		opacity: 1;
 	}
@@ -444,30 +462,30 @@ a.btn-social {
 	&.dribbble {
 		margin-right: 1rem;
 		&:before {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 15px;
+			background: url("../img/dribbble-logo.svg");
 			content: "";
 			display: inline-block;
+			height: 15px;
+			margin-right: 0.5rem;
 			position: relative;
 			width: 15px;
-			height: 15px;
-			background-position: center;
-			background-size: 15px;
-			background-repeat: no-repeat;
-			background: url("../img/dribbble-logo.svg");
-			margin-right: 0.5rem;
 		}
 	}
 	&.linkedin {
 		&:before {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 15px;
+			background: url("../img/linkedin-logo.svg");
 			content: "";
 			display: inline-block;
+			height: 15px;
+			margin-right: 0.5rem;
 			position: relative;
 			width: 15px;
-			height: 15px;
-			background-position: center;
-			background-size: 15px;
-			background-repeat: no-repeat;
-			background: url("../img/linkedin-logo.svg");
-			margin-right: 0.5rem;
 		}
 	}
 	#social-links a:first-child {
@@ -483,8 +501,8 @@ a.btn-social {
 
 .project-title-art {
 	display: inline-block;
-	position: relative;
 	font-family: "HaveHeartOne", "Avenir 85 Heavy", sans-serif;
+	position: relative;
 	h1, h2, h3, h4 {
 		margin: 0;
 	}
@@ -519,65 +537,65 @@ a.btn-social {
 		line-height: 1.5;
 	}
 	.ec-ampersand-modifier {
-		position: absolute;
 	    bottom: -0.7rem;
 	    left: 13.55rem;
+		position: absolute;
 	}
 	.ec-lastword-modifier {
-		position: absolute;
-	    left: 10rem;
     	bottom: -3.5rem;
+	    left: 10rem;
+		position: absolute;
 	}
 }
 
 .content-separator-text {
 	font-family: 'Avenir 85 Heavy', sans-serif;
-    width: 70%;
     color: #000;
-    letter-spacing: -0.5px;
     font-size: 1.75rem;
+    letter-spacing: -0.5px;
     line-height: 1.1;
     margin: 5rem auto 7rem auto;
     position: relative;
+    width: 70%;
     &:before {
+    	color: rgba(240,240,240, 1);
     	content: attr(data-pullquote);
     	font-family: "HaveHeartOne";
-    	position: absolute;
-    	left: -10%;
     	font-size: 6rem;
+    	left: -10%;
+    	position: absolute;
     	top: 75%;
-    	color: rgba(240,240,240, 1);
-    	z-index: 1;
     	width: 150%;
+    	z-index: 1;
     }
 }
 
 .project-floating-text {
-	position: fixed;
     color: rgba(0, 0, 0, 0.5);
     font-family: monospace;
     font-size: 1.25rem;
     left: 0;
     left: 0;
+	position: fixed;
     top: 20%;
     transform: rotate(-90deg);
 }
 
 .project-image {
-	position: relative;
 	opacity: 1;
+	position: relative;
 	&-image {
 		&:hover {
 			opacity: 0.75;
 		}
 	}
 	.project-image-image-caption {
-		position: absolute;
-	    left: -9.5%;
 	    bottom: 20%;
-	    font-family: monospace;
 	    color: grey;
+	    font-family: monospace;
 	    font-size: 0.9rem;
+	    left: -9.5%;
+		position: absolute;
 	    transform: rotate(-90deg);
 	}
 }
@@ -591,8 +609,8 @@ a, button {
 		position: relative;
 	}
 	&.btn-primary {
-		border-radius: 50px;
 		background-color: #ff5722;
+		border-radius: 50px;
 		color: $white;
 		padding: 8px 13px;
 		&:hover {
@@ -600,8 +618,8 @@ a, button {
 		}
 	}
 	&.btn-secondary {
-		border-radius: 50px;
 		background-color: #4885ed;
+		border-radius: 50px;
 		color: $white;
 		padding: 8px 13px;
 		&:hover {
@@ -618,27 +636,36 @@ a, button {
 	}
 	&.btn-block {
 		display: block;
-		width: 100%;
 		margin: 1rem 0;
+		width: 100%;
 	}
 	&.btn-text {
 		background: transparent;
 		font-family: monospace;
+		&-large {
+			font-size: 1.25rem;
+		}
 		&.text-grey {
-			color: grey;
 		    border-bottom: 1px solid grey;
+			color: grey;
 		    &:hover {
-				color: $white;
 			    border-color: $white;
+				color: $white;
+			}
+			&.inverse {
+				&:hover {
+					border-color: $black;
+					color: $black;
+				}
 			}
 		}
 		&.dribbble {
-			color: #ff0047;
     		border-color: #ff0047;
+			color: #ff0047;
 		}
 		&.linkedin {
-			color: #3f6cea;
     		border-color: #3f6cea;
+			color: #3f6cea;
     		margin-right: 0.5rem;
 		}
 		&.text-white {
@@ -662,43 +689,43 @@ a, button {
 #content {
 	color: #000;
 	.title {
-		margin-top: 2rem;
-		margin-bottom: 0.5rem;
 		font-size: 1.5rem;
 		letter-spacing: 0.5px;
+		margin-bottom: 0.5rem;
+		margin-top: 2rem;
 	}
 	p {
+		color: #424346;
 		font-size: 1.25rem;
 		letter-spacing: -0.2px;
 		margin-top: 0;
-		color: #424346;
 	}
 	.article-introduction {
-		margin-top: 5rem;
 		margin-bottom: 5rem;
+		margin-top: 5rem;
 	}
 	.content-intro {
 		font-size: 2.25rem;
-			line-height: 1.5;
-			h2{
-			margin: 0;
+		line-height: 1.5;
+		h2{
 			font-size: 2.5rem;
+			margin: 0;
 		}
 	}
 	.project-info {
 		background-color: #f9f9f9;
-		padding: 50px;
 		font-size: 2.25rem;
-			line-height: 1.5;
-			height: 100%;
-			&-title {
-			margin: 0;
+		height: 100%;
+		line-height: 1.5;
+		padding: 50px;
+		&-title {
 			color: #262829;
 			font-size: 1.2rem;
+			margin: 0;
 		}
 		&-description {
-			margin: 0;
 			color: #262829;
+			margin: 0;
 			margin-bottom: 1rem;
 		}
 	}
@@ -706,9 +733,9 @@ a, button {
 
 .staggered-row {
 	h3 {
-		margin: 0;
 		font-size: 1.75rem;
     	line-height: 1.25;
+		margin: 0;
 		&.title {
 			font-family: 'Avenir 85 Heavy', sans-serif;
 			&.light {
@@ -724,17 +751,17 @@ a, button {
 
 blockquote {
 	margin: 50px auto;
-	width: 55%;
 	min-width: 320px;
 	position: relative;
+	width: 55%;
 	&:before {
+		color: #e3e9ef;
 		content: "\"";
-		position: absolute;
+		font-size: 10rem;
 		left: -70px;
+		position: absolute;
 		top: 50%;
 		transform: translateY(-50%) rotate(-10deg);
-		color: #e3e9ef;
-		font-size: 10rem;
 	}
 	> p {
 		margin: 0;
@@ -753,14 +780,14 @@ blockquote {
 			flex: 100%;
 		}
 		.content-section-content--hero {
+			margin: 5rem 0 2rem 0;
 			position: relative;
 			width: 90%;
-			margin: 5rem 0 2rem 0;
 		}
 		#social-links {
+			margin: 1rem 0;
 			position: relative;
 			display: block;
-			margin: 1rem 0;
 		}
 	}
 };
@@ -787,8 +814,8 @@ blockquote {
 				margin: 0 auto 0 0;
 			}
 			&.flex-row {
-				    align-items: center;
-    				display: flex;
+				align-items: center;
+    			display: flex;
 				// flex-flow: column nowrap;
 				div[class*="col"] {
 					margin-left: 0;
@@ -821,32 +848,32 @@ blockquote {
 		padding: 3rem 4rem 3rem 4rem;
 	}
 	.mobile-menu {
+    	background: url("../img/mobilemenu.svg");
     	display: block;
-    	width: 25px;
     	height: 25px;
     	margin: 0 0 0 auto;
-    	background: url("../img/mobilemenu.svg");
+    	width: 25px;
     	&:hover {
     		cursor: pointer;
     	}
     }
 	.navigation-area .navigation {
-		position: fixed;
-		display: none;
-	    width: 100%;
-	    height: 100%;
-	    z-index: 99999;
-	    background-color: rgba(0,0,0,0.9);
-	    top: 0;
-	    left: 0;
-	    justify-content: center;
 	    align-items: center;
+	    background-color: rgba(0,0,0,0.9);
+		display: none;
+	    height: 100%;
+	    justify-content: center;
+	    left: 0;
+		position: fixed;
+	    top: 0;
+	    width: 100%;
+	    z-index: 99999;
 	    .close-nav {
 	    	display: block;
-	    	position: absolute;
-		    top: 5%;
-		    right: 10%;
 		    font-size: 2rem;
+	    	position: absolute;
+		    right: 10%;
+		    top: 5%;
 	    }
 	    .nav-list > .nav-list-item > a {
 	    	font-size: 2rem;
@@ -860,6 +887,26 @@ blockquote {
 			margin: 0;
 		}
 	}
+	.card-list {
+		margin: 1.5rem 0;
+		.card {
+			&.disabled:after {
+				position: relative;
+				right: 0;
+			}
+			&.row {
+				flex-flow: column nowrap;
+				.card-row-meta {
+					&:first-child {
+						margin: 1rem 0 0 0;
+					}
+					&:last-child {
+						margin: 0 0 1rem 0;
+					}
+				}
+			}
+		}
+	}
 }
 
 
@@ -867,15 +914,19 @@ blockquote {
 	.flex-column-small {
 		flex-flow: column nowrap;
 	}
+	#container {
+		padding: 1rem;
+	}
 	#intro {
-		padding-bottom: 4rem;
 		min-height: auto;
+		padding-bottom: 2rem;
 		.content-section-content--hero {
-			width: 100%;
 			max-width: 100%;
+			width: 100%;
+			margin-bottom: 4rem;
 			h2 {
-				font-size: 1.7rem;
 				display: block;
+				font-size: 1.7rem;
 				margin-bottom: 1rem;
 			}
 			.btn {
@@ -907,22 +958,41 @@ blockquote {
 			margin: 1rem 0;
 		}
 	}
-	.card-list {
-		margin: 1.5rem 0;
-		.card.row {
-			flex-flow: column nowrap;
-			.card-row-meta {
-				&:first-child {
-					margin: 1rem 0 0 0;
-				}
-				&:last-child {
-					margin: 0 0 1rem 0;
-				}
-			}
-		}
-	}
 	.posts-meta {
 		padding-top: 0;
 	}
-	
+	.project-page {
+		.project-title-art-container {
+			margin: 1rem;
+			.project-title-art {
+				.super {
+					font-size: 7rem;
+				}
+			}
+		}
+		.project-floating-text {
+			position: relative;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			transform: none;
+		}
+	}	
+	.project-image {
+		> .project-image-image-caption {
+			transform: none;
+			position: relative;
+			left: 0;
+			bottom: 0;
+		}
+	}
+	img {
+		width: 100%;
+	}
+	.content-separator-text {
+		margin: 0 auto 3rem auto;
+		text-align: center;
+		width: 90%;
+	}
 }
