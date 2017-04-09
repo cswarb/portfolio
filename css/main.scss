@@ -56,7 +56,7 @@
 	padding: 3rem 9rem 3rem 9rem;
 	width: 100%;
 	&.inverse {
-		background-color: $white;
+		background-color: #ece9e9;
 		color: $black;
 		.navigation a {
 			color: $black;
@@ -68,7 +68,7 @@
 		    	color: $black;
 		    }
 		    &:before {
-		    	background-color: $white;
+		    	background-color: #ece9e9;
 		    }
 		}
 	}
@@ -501,8 +501,10 @@ a.btn-social {
 
 .project-title-art {
 	display: inline-block;
-	font-family: "HaveHeartOne", "Avenir 85 Heavy", sans-serif;
+	font-family: "Avenir 85 Heavy", sans-serif; //"HaveHeartOne",
 	position: relative;
+	text-align: left;
+	color: #ff6431;
 	h1, h2, h3, h4 {
 		margin: 0;
 	}
@@ -738,6 +740,7 @@ a, button {
 		margin: 0;
 		&.title {
 			font-family: 'Avenir 85 Heavy', sans-serif;
+			margin-bottom: 2rem;
 			&.light {
 				font-family: 'Avenir 55 Roman', sans-serif;
 				font-weight: 400;
@@ -746,6 +749,27 @@ a, button {
 	}
 	p {
 		margin-top: 0;
+	}
+}
+
+.project-points {
+	.title {
+		font-size: 1.15rem;
+    	margin: 1rem 0 0.1rem 0;
+    	&:first-child {
+    		margin: 0 0 0.1rem 0;
+    	}
+	}
+	.content {
+		font-family: monospace;
+	}
+}
+
+.link {
+	color: #ff6431;
+	font-weight: 700;
+	&:visited {
+		color: #ff6431;
 	}
 }
 

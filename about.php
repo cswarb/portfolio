@@ -34,7 +34,7 @@
 									<li class="info-list-item">— SASS, CSS &amp; methodologies</li>
 									<li class="info-list-item">— JavaScript + TypeScript</li>
 									<li class="info-list-item">— jQuery</li>
-									<li class="info-list-item">— AngularJS 1.x</li>
+									<li class="info-list-item">— Angular 2 / Angular 1.x</li>
 									<li class="info-list-item">— Wordpress</li>
 									<li class="info-list-item">— Photoshop/Illustrator CS + CC &amp; Lightroom 4+</li>
 									<li class="info-list-item">— Cross Browser Compatibility &amp; testing</li>
@@ -43,8 +43,7 @@
 							<div class="col-6 small-margin-top">
 								<ul class="info-list">
 									<li class="info-list-item">— Grunt + Gulp</li>
-									<li class="info-list-item">— Git</li>
-									<li class="info-list-item">— Sourcetree</li>
+									<li class="info-list-item">— Git / Sourcetree</li>
 									<li class="info-list-item">— Agile Methodology</li>
 									<li class="info-list-item">— Karma &amp; Jasmine testing</li>
 									<li class="info-list-item">— UX Design (User testing, prototyping, analytics and analysis)</li>
