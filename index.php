@@ -25,8 +25,8 @@
 						</div>
 					</div>
 					<div class="col-4"></div>
-					<div class="content-section-underlay">
-						<img class="content-section-underlay-image in-viewport" src="ec.svg" alt="portfolio helper text"/>
+					<div class="content-section-underlay ">
+						<img class="content-section-underlay-image in-viewport fadeInDown" src="ec.svg" alt="portfolio helper text"/>
 					</div>
 				</div>
 				<!-- <div id="social-links">
@@ -50,13 +50,13 @@ window.onload = function() {
         body = document.getElementsByTagName("body")[0];
 
     heroContentArea.addEventListener("mouseover", function(){
-         heroUnderlayImage.classList.remove("fadeOutUp");
-         heroUnderlayImage.classList.add("fadeInDown");
+         // heroUnderlayImage.classList.remove("fadeOutUp");
+         // heroUnderlayImage.classList.add("fadeInDown");
     });
 
     heroContentArea.addEventListener("mouseout", function(){
-         heroUnderlayImage.classList.remove("fadeInDown");
-         heroUnderlayImage.classList.add("fadeOutUp");
+         // heroUnderlayImage.classList.remove("fadeInDown");
+         // heroUnderlayImage.classList.add("fadeOutUp");
     });
 
     mobileMenu.addEventListener("click", function(){
